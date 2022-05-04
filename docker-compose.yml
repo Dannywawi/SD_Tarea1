@@ -15,7 +15,7 @@ services:
       - "6379:6379"
   
   db:
-    image: postgres:14.2
+    image: docker.io/bitnami/postgresql:11
     restart: always
     hostname: myhost
     environment:
@@ -24,7 +24,6 @@ services:
       POSTGRES_PASSWORD: a
     
     volumes:
-      - /Documentos/T1/postgres:/var/lib/postgresql/data
       - ./Postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
       
     ports:
