@@ -43,7 +43,7 @@ services:
   client:
     build: ./Client
     depends_on:
-      - postgres
+      - db
       - server
     ports:
       - "8080:8080"
@@ -51,4 +51,4 @@ services:
   server:
     build: ./Server
     depends_on:
-      - postgres
+      - db
