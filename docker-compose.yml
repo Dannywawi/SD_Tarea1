@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  app:
+    image: testport
+    ports:
+      - "3000:3000"
+  
+  redis:
+    image: bitnami/redis:6.0.16
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"
+  
+  db:
+    image: postgres:14.2
+    restart: always
+    hostname: myhost
+    environment:
+      POSTGRES_DB: juan
+      POSTGRES_USER: a
+      POSTGRES_PASSWORD: a
+    
+    volumes:
+      - /Documentos/T1/postgres:/var/lib/postgresql/data
+      - ./Postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      
+    ports:
+      - "9091:5432"
+  
+  grpc-server:
+    image: 
+    environment:
+      - name=value
+    ports:
+      - 
