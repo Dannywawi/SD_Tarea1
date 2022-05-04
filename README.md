@@ -1,5 +1,5 @@
 # SD_Tarea1
-## Integrantes: Maximiliano Sanders y Da
+## Integrantes: Maximiliano Sanders y Danny Ortega
 **USO**
 
 Clonar repositorio Github
