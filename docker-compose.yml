@@ -16,12 +16,12 @@ services:
   
   db:
     image: docker.io/bitnami/postgresql:11
-    restart: always
     hostname: myhost
     environment:
-      POSTGRES_DB: juan
-      POSTGRES_USER: a
-      POSTGRES_PASSWORD: a
+      - POSTGRES_DB= juan
+      - POSTGRES_USER= a
+      - ALLOW_EMPTY_PASSWORD=yes
+      - POSTGRES_PASSWORD= a
     
     volumes:
       - ./Postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
