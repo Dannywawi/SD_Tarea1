@@ -31,8 +31,10 @@ services:
       - "9091:5432"
   
   grpc-server:
-    image: 
-    environment:
-      - name=value
-    ports:
-      - 
+    build: ./GRPC
+    restart: always
+    ports: 
+      - "8050:8050"
+    depends_on:
+      - server
+      - client
