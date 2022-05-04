@@ -1,10 +1,6 @@
 version: "3.7"
 
 services:
-  app:
-    image: testport
-    ports:
-      - "3000:3000"
   
   redis:
     image: bitnami/redis:6.0.16
