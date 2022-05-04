@@ -9,6 +9,7 @@ services:
   redis:
     image: bitnami/redis:6.0.16
     restart: always
+    command: ["redis-server", "--bind", "redis_sv","--maxmemory 2mb","--maxmemory-policy allkeys-lru"]
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
@@ -38,3 +39,11 @@ services:
     depends_on:
       - server
       - client
+
+  client:
+    build: ./Client
+    depends_on:
+      - postgres
+      - server
+    ports:
+      - "8080:8080"
