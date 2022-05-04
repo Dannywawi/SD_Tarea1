@@ -8,7 +8,6 @@ services:
   
   redis:
     image: bitnami/redis:6.0.16
-    restart: always
     command: ["redis-server", "--bind", "redis_sv","--maxmemory 2mb","--maxmemory-policy allkeys-lru"]
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
