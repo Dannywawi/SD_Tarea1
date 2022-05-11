@@ -1,14 +1,37 @@
 version: "3.7"
 
 services:
-  
+
+  client:
+    build: ./Client
+    container_name: cliente
+    depends_on:
+      - db
+      - server
+    ports:
+      - "8080:8080"
+    environment:
+      - REDIS_URL=redis://cache
+
+  server:
+    build: ./Server
+    container_name: servidor
+    depends_on:
+      - db
+      - cache
+    environment:
+      - REDIS_URL=redis://cache
+
   redis:
     image: bitnami/redis:6.0.16
     command: ["redis-server", "--bind", "redis_sv","--maxmemory 2mb","--maxmemory-policy allkeys-lru"]
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_MAXMEMORY=1mb
+      - REDIS_MAXMEMORY_POLICY=allkeys-lru
     ports:
       - "6379:6379"
+  
   
   db:
     image: docker.io/bitnami/postgresql:11
@@ -34,15 +57,3 @@ services:
       - server
       - client
 
-  client:
-    build: ./Client
-    depends_on:
-      - db
-      - server
-    ports:
-      - "8080:8080"
-
-  server:
-    build: ./Server
-    depends_on:
-      - db

@@ -5,7 +5,7 @@
 Clonar repositorio Github
 
 ```bash
-git clone https://github.com/Joako-Sador/SD-Homeworks.git
+git clone https://github.com/Dannywawi/SD_Tarea1.git
 ```
 
 Ejecucion del Software
